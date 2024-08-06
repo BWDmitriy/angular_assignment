@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-password-strength',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './password-strength.component.html',
-  styleUrl: './password-strength.component.css',
+  styleUrls: ['./password-strength.component.css'],
 })
 export class PasswordStrengthComponent {
   password: string = '';

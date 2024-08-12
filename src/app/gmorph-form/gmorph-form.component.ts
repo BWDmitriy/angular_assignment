@@ -1,7 +1,13 @@
-import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  QueryList,
+  ViewChildren,
+  ElementRef,
+} from '@angular/core';
 import { PasswordStrengthComponent } from '../password-strength/password-strength.component';
 import VanillaTilt from 'vanilla-tilt';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { InputComponent } from '../input/input.component';
 
@@ -18,9 +24,10 @@ import { InputComponent } from '../input/input.component';
   ],
 })
 export class GmorphFormComponent implements OnInit {
-  form: FormGroup;
+  form: FormGroup = new FormGroup({});
 
-  @ViewChildren('card') cards: QueryList<ElementRef>;
+  @ViewChildren('card') cards: QueryList<ElementRef> =
+    new QueryList<ElementRef>();
 
   ngOnInit(): void {
     this.form = new FormGroup({

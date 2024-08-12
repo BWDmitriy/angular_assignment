@@ -4,12 +4,6 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-input',
-  template: `<input
-    [type]="type"
-    (input)="onInput($event)"
-    [value]="value"
-    [placeholder]="placeholder"
-  />`,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -20,6 +14,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   styleUrls: ['./input.component.css'],
+  templateUrl: './input.component.html',
 })
 export class InputComponent implements ControlValueAccessor {
   @Input() type: string = 'text';

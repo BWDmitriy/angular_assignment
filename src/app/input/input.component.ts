@@ -1,5 +1,6 @@
 import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-input',
@@ -17,6 +18,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     },
   ],
   standalone: true,
+  imports: [CommonModule],
+  styleUrls: ['./input.component.css'],
 })
 export class InputComponent implements ControlValueAccessor {
   @Input() type: string = 'text';

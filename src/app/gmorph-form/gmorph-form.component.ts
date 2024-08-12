@@ -1,15 +1,15 @@
 import {
   Component,
   OnInit,
-  QueryList,
   ViewChildren,
+  QueryList,
   ElementRef,
 } from '@angular/core';
-import { PasswordStrengthComponent } from '../password-strength/password-strength.component';
-import VanillaTilt from 'vanilla-tilt';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { PasswordStrengthComponent } from '../password-strength/password-strength.component';
 import { InputComponent } from '../input/input.component';
+import { CommonModule } from '@angular/common';
+import VanillaTilt from 'vanilla-tilt';
 
 @Component({
   selector: 'app-gmorph-form',

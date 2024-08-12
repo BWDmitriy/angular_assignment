@@ -1,6 +1,8 @@
 import { Component, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { PasswordStrengthService } from './password-strength.service';
+import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-password-strength',
   templateUrl: './password-strength.component.html',
@@ -13,6 +15,7 @@ import { PasswordStrengthService } from './password-strength.service';
     },
   ],
   standalone: true,
+  imports: [CommonModule],
 })
 export class PasswordStrengthComponent implements ControlValueAccessor {
   value: string = '';

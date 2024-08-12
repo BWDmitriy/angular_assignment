@@ -5,26 +5,27 @@ import { Injectable } from '@angular/core';
 })
 export class PasswordStrengthService {
   calculateStrength(password: string): number {
-    if (length === 0) {
-      return 0;
-    } else if (length < 8) {
-      return 1;
-    } else {
-      const hasLetters = /[a-zA-Z]/.test(password);
-      const hasDigits = /\d/.test(password);
-      const hasSymbols = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+    if (password.length === 0) {
+      return 0; // Empty password
+    }
+    if (password.length < 8) {
+      return 1; // Password too short
+    }
 
-      if (hasLetters && hasDigits && hasSymbols) {
-        return 4;
-      } else if (
-        (hasLetters && hasDigits) ||
-        (hasLetters && hasSymbols) ||
-        (hasDigits && hasSymbols)
-      ) {
-        return 3;
-      } else {
-        return 2;
-      }
+    const hasLetters = /[a-zA-Z]/.test(password);
+    const hasDigits = /\d/.test(password);
+    const hasSymbols = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    if (hasLetters && hasDigits && hasSymbols) {
+      return 4; // Strong
+    } else if (
+      (hasLetters && hasDigits) ||
+      (hasLetters && hasSymbols) ||
+      (hasDigits && hasSymbols)
+    ) {
+      return 3; // Medium
+    } else {
+      return 2; // Easy
     }
   }
 }

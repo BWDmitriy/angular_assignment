@@ -14,11 +14,10 @@ import { PasswordStrengthService } from './password-strength.service';
   ],
 })
 export class PasswordStrengthComponent implements ControlValueAccessor {
-  value: string;
+  value: string = '';
   strength: number = 0;
-
-  onChange: (value: string) => void;
-  onTouched: () => void;
+  onChange: (value: string) => void = () => {};
+  onTouched: () => void = () => {};
 
   constructor(private passwordStrengthService: PasswordStrengthService) {}
 
@@ -29,9 +28,15 @@ export class PasswordStrengthComponent implements ControlValueAccessor {
   registerOnChange(fn: (value: string) => void): void {
     this.onChange = fn;
   }
+
+  registerOnTouched(fn: () => void): void {
+    this.onTouched = fn;
+  }
+
   onInput(event: Event): void {
     const input = event.target as HTMLInputElement;
-    this.password = input.value;
+    this.value = input.value;
+    this.onChange(this.value);
     this.updateStrength();
   }
 

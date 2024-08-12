@@ -12,6 +12,7 @@ import { PasswordStrengthService } from './password-strength.service';
       multi: true,
     },
   ],
+  standalone: true,
 })
 export class PasswordStrengthComponent implements ControlValueAccessor {
   value: string = '';

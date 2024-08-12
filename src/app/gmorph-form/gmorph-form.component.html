@@ -1,10 +1,12 @@
 <div class="container">
-    <div class="card">
+    <div class="card" #card>
         <h1 class="login-heading">Login</h1>
-        <div class="input-wrapper">
-            <input class="username-input" type="text" placeholder="Username">
-            <input class="email-input" type="text" placeholder="Email">
-            <app-password-strength></app-password-strength>
+        <div class="input-wrapper" [formGroup]="form">
+            <!-- <input class="username-input" type="text" placeholder="Username">
+            <input class="email-input" type="text" placeholder="Email"> -->
+            <app-input formControlName="username" placeholder="Username"></app-input>
+            <app-input formControlName="email" placeholder="Email"></app-input>
+            <app-password-strength formControlName="password"></app-password-strength>
         </div>
         <div class="container-button">
             <button class="btn"><a href="#">Login</a></button>

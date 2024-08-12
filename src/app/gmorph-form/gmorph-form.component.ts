@@ -4,6 +4,7 @@ import {
   ViewChildren,
   QueryList,
   ElementRef,
+  AfterViewInit,
 } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { PasswordStrengthComponent } from '../password-strength/password-strength.component';
@@ -23,7 +24,7 @@ import VanillaTilt from 'vanilla-tilt';
     InputComponent,
   ],
 })
-export class GmorphFormComponent implements OnInit {
+export class GmorphFormComponent implements OnInit, AfterViewInit {
   form: FormGroup = new FormGroup({});
 
   @ViewChildren('card') cards: QueryList<ElementRef> =
@@ -35,15 +36,31 @@ export class GmorphFormComponent implements OnInit {
       email: new FormControl(''),
       password: new FormControl(''),
     });
+  }
 
-    this.cards.changes.subscribe((cards: QueryList<ElementRef>) => {
-      const elements = cards.toArray().map((card) => card.nativeElement);
-      VanillaTilt.init(elements, {
-        max: 15,
-        speed: 400,
-        glare: true,
-        'max-glare': 0.5,
+  ngAfterViewInit(): void {
+    if (typeof window !== 'undefined') {
+      this.cards.changes.subscribe((cards: QueryList<ElementRef>) => {
+        const elements = cards.toArray().map((card) => card.nativeElement);
+        if (elements.length > 0) {
+          VanillaTilt.init(elements, {
+            max: 15,
+            speed: 400,
+            glare: true,
+            'max-glare': 0.5,
+          });
+        }
       });
-    });
+
+      const elements = this.cards.toArray().map((card) => card.nativeElement);
+      if (elements.length > 0) {
+        VanillaTilt.init(elements, {
+          max: 15,
+          speed: 400,
+          glare: true,
+          'max-glare': 0.5,
+        });
+      }
+    }
   }
 }
